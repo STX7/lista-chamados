@@ -1,83 +1,76 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Abertura de Chamado</title>
-    @vite('resources/css/app.css', 'resources/css/style.css', 'resources/css/style.css.map', 'resources/css/style.scss','https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css','resources/js/app.js','https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-
-<body class="antialiased">
-    <div
-        class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
-        @if (Route::has('login'))
-            <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
-                @auth
-                    <a href="{{ url('/dashboard') }}"
-                        class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
-                @else
-                    <a href="{{ route('login') }}"
-                        class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Acessar
-                        sistema</a>
-                @endauth
-            </div>
-        @endif
-    </div>
-
-    <div class="container">
-        <p class="text-center fw-bolder fs-3">Abertura de chamado</p>
-    </div>
-
-    <div class="container">
-        <form action="{{ route('call.store') }}" method="POST" enctype="multipart/form-data">
-            @csrf
-        <div class="card card-body-mudancas">
-            <div class="card-body container">
-
-                    <fieldset class="row">
-
-                        <div class="mb-3 col-lg-12">
-                            <label for="nome" class="form-label">Nome do solicitante</label>
-                            <input type="text" class="form-control" id="nome" name="name">
-                        </div>
-                        <div class="mb-3 col-lg-3">
-                            <label for="telefone_princ" class="form-label">Departamento</label>
-                            <input type="text" class="form-control" id="telefone_princ" name="department">
-                        </div>
-                        <div class="mb-3 col-lg-3">
-                            <label for="telefone_princ" class="form-label">Setor</label>
-                            <input type="text" class="form-control" id="telefone_princ" name="sector">
-                        </div>
-                        <div class="mb-3 col-lg-3">
-                            <label for="telefone_princ" class="form-label">Qual o problema</label>
-                            <input type="text" class="form-control" id="telefone_princ" name="problem">
-                        </div>
-                        <div class="mb-3 col-lg-3">
-                            <label for="telefone_princ" class="form-label">Descreva o problema</label>
-                            <input type="text" class="form-control" id="telefone_princ" name="description">
-                        </div>
-                        <div class="mb-3 col-lg-3">
-                            <label for="telefone_princ" class="form-label">Endereço</label>
-                            <input type="text" class="form-control" id="telefone_princ" name="address">
-                        </div>
-                        <div class="mb-3 col-lg-3">
-                            <label for="telefone_princ" class="form-label">Telefone para contato</label>
-                            <input type="text" class="form-control" id="telefone_princ" name="contact">
-                        </div>
-                        <div class="mb-3 col-lg-3">
-                            <button type="submit">Enviar</button>
-                        </div>
-                    </fieldset>
-
-                </form>
-            </div>
+<body class="font-sans text-gray-900 antialiased">
+    <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-900">
+        <div
+            class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white dark:bg-gray-800 shadow-md overflow-hidden sm:rounded-lg">
+            <h4>Abertura de ordem de serviço</h4><br>
+            <form action="{{ route('call.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="col-12 row">
+                    <div class="col-12">
+                        <label class ="block font-medium text-sm text-gray-700 dark:text-gray-300">
+                            Solicitante (obrigatório)
+                        </label>
+                        <input class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" style="width: 100%">
+                    </div>
+                    <div class="col-12">
+                        <label class ="block font-medium text-sm text-gray-700 dark:text-gray-300">
+                            Departamento (obrigatório)
+                        </label>
+                        <input class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" style="width: 100%">
+                    </div>
+                    <div class="col-12">
+                        <label class ="block font-medium text-sm text-gray-700 dark:text-gray-300">
+                            Setor (obrigatório)
+                        </label>
+                        <input class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm tamanho" >
+                    </div>
+                    <div class="col-12">
+                        <label class ="block font-medium text-sm text-gray-700 dark:text-gray-300">
+                            Qual o problema? (obrigatório)
+                        </label>
+                        <input class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm tamanho" >
+                    </div>
+                    <div class="col-12">
+                        <label class ="block font-medium text-sm text-gray-700 dark:text-gray-300">
+                            Descrição do problema (obrigatório)
+                        </label>
+                        <input class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm tamanho" >
+                    </div>
+                    <div class="col-12">
+                        <label class ="block font-medium text-sm text-gray-700 dark:text-gray-300">
+                            Endereço
+                        </label>
+                        <input class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm tamanho" >
+                    </div>
+                    <div class="col-12">
+                        <label class ="block font-medium text-sm text-gray-700 dark:text-gray-300">
+                            Número de telefone para contato
+                        </label>
+                        <input class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm tamanho" >
+                    </div>
+                    <div class="col-12">
+                        <label class ="block font-medium text-sm text-gray-700 dark:text-gray-300">
+                            E-mail para contato
+                        </label>
+                        <input class="border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm tamanho" >
+                    </div><br>
+                    <button type = "submit" class="inline-flex items-center px-4 py-2 dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150 back-input">
+                        Enviar
+                    </button>
+                </div>
+            </form>
         </div>
-        </form>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-    </script>
 </body>
-
 </html>

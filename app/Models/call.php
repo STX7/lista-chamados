@@ -5,8 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class call extends Model
+class Call extends Model
 {
+    /** @use HasFactory<\Database\Factories\CallFactory> */
     use HasFactory;
 
     /**
@@ -16,12 +17,14 @@ class call extends Model
      */
     protected $fillable = [
         'name',
+        'email',
         'department',
         'sector',
-        'problem',
-        'description',
-        'contact',
-        'status',
+        'number',
         'address',
+        'description',
+        'problem',
+        'status',
+        'comment',
     ];
 }

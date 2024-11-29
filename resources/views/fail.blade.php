@@ -8,6 +8,6 @@
 </head>
 <body>
 <h1>Falhou</h1>
-<a href="{{ route('intro') }}">tentar novamente</a>
+<a href="">tentar novamente</a>
 </body>
 </html>
