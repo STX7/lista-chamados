@@ -50,10 +50,11 @@
                                         <td class="p-4"><button disabled type="button"
                                                 class="cursor-pointer whitespace-nowrap rounded-xl bg-amber-500 px-4 py-2 text-sm font-medium tracking-wide text-white transition hover:opacity-75 text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:bg-amber-500 dark:text-white dark:focus-visible:outline-amber-500">Pendente</button>
                                         </td>
+                                        <a href="{{ route('call.edit',$item->id) }}">
                                         <td class="p-4"><button type="button"
                                                 class="cursor-pointer whitespace-nowrap rounded-md bg-transparent p-0.5 font-semibold text-black outline-black hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 active:opacity-100 active:outline-offset-0 dark:text-white dark:outline-white">Editar</button>
                                         </td>
-
+                                        </a>
                                     </tr>
                                 @endif
                                 @if ($item->status == 1)
@@ -73,9 +74,11 @@
                                         <td class="p-4"><button disabled type="button"
                                                 class="cursor-pointer whitespace-nowrap rounded-xl bg-green-600 px-4 py-2 text-sm font-medium tracking-wide text-white transition hover:opacity-75 text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:bg-green-600 dark:text-white dark:focus-visible:outline-green-600">Resolvido</button>
                                         </td>
-                                        <td class="p-4"><button type="button"
+
+                                        <td class="p-4"><a href="{{ route('call.edit',$item->id) }}"><button type="button"
                                                 class="cursor-pointer whitespace-nowrap rounded-md bg-transparent p-0.5 font-semibold text-black outline-black hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 active:opacity-100 active:outline-offset-0 dark:text-white dark:outline-white">Editar</button>
-                                        </td>
+                                            </a>
+                                            </td>
 
                                     </tr>
                                 @endif
@@ -98,10 +101,11 @@
                                                 class="cursor-pointer whitespace-nowrap rounded-xl bg-red-600 px-4 py-2 text-sm font-medium tracking-wide text-white transition hover:opacity-75 text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:bg-red-600 dark:text-white dark:focus-visible:outline-red-600">Não
                                                 resolvido</button>
                                         </td>
+                                        <a href="{{ route('call.edit',$item->id) }}">
                                         <td class="p-4"><button type="button"
                                                 class="cursor-pointer whitespace-nowrap rounded-md bg-transparent p-0.5 font-semibold text-black outline-black hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 active:opacity-100 active:outline-offset-0 dark:text-white dark:outline-white">Editar</button>
                                         </td>
-
+                                    </a>
                                     </tr>
                                 @endif
                                 @if ($item->status == 3)
@@ -121,10 +125,11 @@
                                         </td>
                                         <td class="p-4"><button disabled type="button" class="cursor-pointer whitespace-nowrap rounded-xl bg-sky-600 px-4 py-2 text-sm font-medium tracking-wide text-white transition hover:opacity-75 text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:bg-sky-600 dark:text-white dark:focus-visible:outline-sky-600">Finalizado</button>
                                         </td>
+                                        <a href="{{ route('call.edit',$item->id) }}">
                                         <td class="p-4"><button type="button"
                                                 class="cursor-pointer whitespace-nowrap rounded-md bg-transparent p-0.5 font-semibold text-black outline-black hover:opacity-75 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 active:opacity-100 active:outline-offset-0 dark:text-white dark:outline-white">Editar</button>
                                         </td>
-
+                                    </a>
                                     </tr>
                                 @endif
                             @endforeach

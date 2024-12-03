@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('certificates', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('surname');
+            $table->string('number');
+            $table->string('identification');
+            $table->date('validity');
+            $table->string('email')->nullable();
+            $table->string('status');
             $table->timestamps();
         });
     }

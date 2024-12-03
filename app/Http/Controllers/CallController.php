@@ -35,7 +35,7 @@ class CallController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCallRequest $request)
+    public function store(Request $request)
     {
         if ($request->name == null){
             return redirect()->back()->with('error', 'error');
@@ -44,7 +44,7 @@ class CallController extends Controller
                 $call = new Call;
                 $call->name =  $request->name;
                 $call->number =  $request->number;
-                $call->status = $request->status;
+                $call->status = 0;
                 $call->address = $request->address;
                 $call->email =  $request->email;
                 $call->department =  $request->department;
@@ -53,7 +53,7 @@ class CallController extends Controller
                 $call->comment =  $request->comment;
                 $call->sector =  $request->sector;
                 $call->save();
-                return redirect()->route('call.list')->with('success', 'Sucesso.');
+                return redirect()->back()->with('success', 'success');
             } catch (Exception) {
                 return redirect()->back()->with('error', 'error');
             }
@@ -72,7 +72,7 @@ class CallController extends Controller
         ->orWhere('department','LIKE','%'.$search.'%')
         ->orWhere('problem','LIKE','%'.$search.'%')
         ->orderBy('status','desc')
-        ->paginate(10);
+        ->paginate(5);
         return view('call.list',compact('calls'));
     }
 
@@ -92,7 +92,7 @@ class CallController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCallRequest $request, Call $call)
+    public function update(Request $request, Call $call)
     {
         try{
             $call->name =  $request->name;
