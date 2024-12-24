@@ -7,6 +7,8 @@ use App\Models\Call;
 use App\Models\Certificate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\VarDumper\VarDumper;
+
 class DashboardController extends Controller
 {
     /**
@@ -14,9 +16,23 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $calls = DB::table('calls');
-        $certificates = DB::table('certificates');
-        return view('dashboard',compact('calls','certificates'));
+        for($i = 1; $i <= 12; $i++){
+            $callsG[$i] = DB::table('calls')->whereMonth('created_at', "$i")->count();
+
+        }
+        for($i = 1; $i <= 12; $i++){
+            $certificatesG[$i] = DB::table('certificates')->whereMonth('created_at', "$i")->count();
+
+        }
+
+        $callsM = DB::table('calls')->whereMonth('created_at', date('m'))->count();
+
+        $callsY = DB::table('calls')->whereYear('created_at', date('Y'))->count();
+        $certificatesM = DB::table('certificates')->whereMonth('created_at', date('m'))->count();
+        $certificatesY = DB::table('certificates')->whereYear('created_at', date('Y'))->count();
+        return view('dashboard',['dataB'=> json_encode($callsG),'dataA'=> json_encode($certificatesG)] , compact('callsY','certificatesY','callsM','certificatesM','callsG','certificatesG'));
+
+
     }
 
     /**

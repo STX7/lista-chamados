@@ -16,6 +16,9 @@
                     <x-nav-link :href="route('certificate.index')" :active="request()->routeIs('certificate.index')">
                         {{ __('Certificados') }}
                     </x-nav-link>
+                    <x-nav-link href='https://www.google.com/maps/d/edit?mid=1XEFWQazewARkN9P0K8dzrwHw-hvgeqw&usp=sharing'>
+                        {{ __('Mapa') }}
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -36,7 +39,7 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
+                            {{ __('Perfil') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
@@ -46,7 +49,7 @@
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
-                                {{ __('Log Out') }}
+                                {{ __('Sair') }}
                             </x-dropdown-link>
                         </form>
                     </x-slot>

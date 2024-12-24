@@ -6,7 +6,6 @@
     </x-slot>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
             <!-- Campo pesquisa-->
             <div class="relative flex w-full max-w-xs flex-col gap-1 text-slate-700 dark:text-slate-300">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" class="absolute left-2.5 top-1/2 size-5 -translate-y-1/2 text-slate-700/50 dark:text-slate-300/50">
@@ -48,7 +47,8 @@
                                         <td class="p-4 text-neutral-900 dark:text-white">{{ $item->department }}</td>
                                         <td class="p-4">{{ date('H:m - d/M/Y ', strtotime($item->created_at)) }}</td>
                                         <td class="p-4"><button disabled type="button"
-                                                class="cursor-pointer whitespace-nowrap rounded-xl bg-amber-500 px-4 py-2 text-sm font-medium tracking-wide text-white transition hover:opacity-75 text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:bg-amber-500 dark:text-white dark:focus-visible:outline-amber-500">Pendente</button>
+                                                class="cursor-pointer whitespace-nowrap rounded-xl bg-amber-500 px-4 py-2 text-sm font-medium tracking-wide text-white transition hover:opacity-75 text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-500 active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:bg-amber-500 dark:text-white dark:focus-visible:outline-amber-500">
+                                                Aviso</button>
                                         </td>
                                         <a href="{{ route('call.edit',$item->id) }}">
                                         <td class="p-4"><button type="button"
@@ -72,7 +72,8 @@
                                         <td class="p-4 text-neutral-900 dark:text-white">{{ $item->department }}</td>
                                         <td class="p-4">{{ date('H:m - d/M/Y ', strtotime($item->created_at)) }}</td>
                                         <td class="p-4"><button disabled type="button"
-                                                class="cursor-pointer whitespace-nowrap rounded-xl bg-green-600 px-4 py-2 text-sm font-medium tracking-wide text-white transition hover:opacity-75 text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:bg-green-600 dark:text-white dark:focus-visible:outline-green-600">Resolvido</button>
+                                                class="cursor-pointer whitespace-nowrap rounded-xl bg-green-600 px-4 py-2 text-sm font-medium tracking-wide text-white transition hover:opacity-75 text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600 active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:bg-green-600 dark:text-white dark:focus-visible:outline-green-600">
+                                                Regular</button>
                                         </td>
 
                                         <td class="p-4"><a href="{{ route('call.edit',$item->id) }}"><button type="button"
@@ -99,7 +100,7 @@
                                         </td>
                                         <td class="p-4"><button disabled type="button"
                                                 class="cursor-pointer whitespace-nowrap rounded-xl bg-red-600 px-4 py-2 text-sm font-medium tracking-wide text-white transition hover:opacity-75 text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:bg-red-600 dark:text-white dark:focus-visible:outline-red-600">Não
-                                                resolvido</button>
+                                                Vencido</button>
                                         </td>
                                         <a href="{{ route('call.edit',$item->id) }}">
                                         <td class="p-4"><button type="button"
@@ -123,7 +124,8 @@
                                         <td class="p-4 text-neutral-900 dark:text-white">{{ $item->department }}</td>
                                         <td class="p-4">{{ date('H:m - d/M/Y ', strtotime($item->created_at)) }}
                                         </td>
-                                        <td class="p-4"><button disabled type="button" class="cursor-pointer whitespace-nowrap rounded-xl bg-sky-600 px-4 py-2 text-sm font-medium tracking-wide text-white transition hover:opacity-75 text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:bg-sky-600 dark:text-white dark:focus-visible:outline-sky-600">Finalizado</button>
+                                        <td class="p-4"><button disabled type="button" class="cursor-pointer whitespace-nowrap rounded-xl bg-sky-600 px-4 py-2 text-sm font-medium tracking-wide text-white transition hover:opacity-75 text-center focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-600 active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:bg-sky-600 dark:text-white dark:focus-visible:outline-sky-600">
+                                            Inativo</button>
                                         </td>
                                         <a href="{{ route('call.edit',$item->id) }}">
                                         <td class="p-4"><button type="button"

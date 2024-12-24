@@ -7,7 +7,6 @@ use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\DashboardController;
 
 Route::any('/dashboard',[DashboardController::class,'index'])->name('dashboard.index');
-
 Route::get('/', function () {
     return view('call');
 });

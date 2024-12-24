@@ -17,7 +17,7 @@ class CertificateController extends Controller
     public function index()
     {
         $certificates = DB::table('certificates')->paginate(5);
-        return view('certificates.list',compact('certificates'));
+        return view('certificate.list',compact('certificates'));
     }
 
     /**
@@ -26,7 +26,7 @@ class CertificateController extends Controller
     public function create()
     {
         try{
-            return view('certificates.add');
+            return view('certificate.add');
         }catch(Exception $e){
             return view('fail');
         }
@@ -35,23 +35,22 @@ class CertificateController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreCertificateRequest $request)
+    public function store(Request $request)
     {
+
         if ($request->name == null){
             return redirect()->back()->with('error', 'error');
         }else {
             try {
                 $certificate = new Certificate;
                 $certificate->name =  $request->name;
-                $certificate->number =  $request->number;
+                $certificate->surname =  $request->surname;
                 $certificate->status = $request->status;
-                $certificate->address = $request->address;
+                $certificate->identification = $request->identification;
                 $certificate->email =  $request->email;
-                $certificate->department =  $request->department;
-                $certificate->description =  $request->description;
-                $certificate->problem =  $request->problem;
-                $certificate->comment =  $request->comment;
-                $certificate->sector =  $request->sector;
+                $certificate->number =  $request->number;
+                $certificate->cnpj =  $request->cnpj;
+                $certificate->validity =  date('d-m-Y', strtotime('+1 year'));
                 $certificate->save();
                 return redirect()->route('certificate.list')->with('success', 'Sucesso.');
             } catch (Exception) {
@@ -97,9 +96,9 @@ class CertificateController extends Controller
     {
         try{
             $certificate->name =  $request->name;
-            $certificate->number =  $request->number;
+            $certificate->surname =  $request->number;
             $certificate->status = $request->status;
-            $certificate->address = $request->address;
+            $certificate->validity = $request->address;
             $certificate->email =  $request->email;
             $certificate->department =  $request->department;
             $certificate->description =  $request->description;
@@ -123,4 +122,6 @@ class CertificateController extends Controller
         $certificate->status = 4;
         return route("certificate.list");
     }
+
+
 }

@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('certificates', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->string('surname');
             $table->string('number');
-            $table->string('identification');
+            $table->string('identification')->nullable();
+            $table->string('cnpj')->nullable();
             $table->date('validity');
             $table->string('email')->nullable();
             $table->string('status');
