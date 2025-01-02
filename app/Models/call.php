@@ -10,21 +10,18 @@ class Call extends Model
     /** @use HasFactory<\Database\Factories\CallFactory> */
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'name',
         'email',
-        'department',
-        'sector',
         'number',
         'address',
-        'description',
+        'properties',
         'problem',
-        'status',
         'comment',
+        'department',
+        'description',
+        'status',
+
     ];
+
 }

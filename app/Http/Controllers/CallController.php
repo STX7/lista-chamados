@@ -16,8 +16,8 @@ class CallController extends Controller
      */
     public function index()
     {
-            $calls = DB::table('calls')->paginate(5);
-            return view('call.list',compact('calls'));
+        $calls = DB::table('calls')->paginate(5);
+        return view('call.list',compact('calls'));
     }
 
     /**
@@ -50,6 +50,7 @@ class CallController extends Controller
                 $call->department =  $request->department;
                 $call->description =  $request->description;
                 $call->problem =  $request->problem;
+                $call->properties =  $request->properties;
                 $call->comment =  $request->comment;
                 $call->sector =  $request->sector;
                 $call->save();
@@ -79,7 +80,7 @@ class CallController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($id)
+    public function edit(Call $call, $id)
     {
         try{
             $call = Call::find($id);
@@ -92,7 +93,7 @@ class CallController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Call $call)
+    public function update(UpdateCallRequest $request, Call $call)
     {
         try{
             $call->name =  $request->name;
@@ -103,6 +104,7 @@ class CallController extends Controller
             $call->department =  $request->department;
             $call->description =  $request->description;
             $call->problem =  $request->problem;
+            $call->properties =  $request->properties;
             $call->comment =  $request->comment;
             $call->sector =  $request->sector;
             $call->save();

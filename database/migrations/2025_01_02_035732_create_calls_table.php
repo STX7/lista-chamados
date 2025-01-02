@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('sector');
             $table->string('number')->nullable();
             $table->string('address')->nullable();
+            $table->string('properties')->nullable();
             $table->string('problem');
             $table->string('comment')->nullable();
             $table->string('department');

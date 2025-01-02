@@ -1,18 +1,18 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CallController;
-use App\Http\Controllers\CertificateController;
-use App\Http\Controllers\DashboardController;
+use Illuminate\Support\Facades\Route;
 
-Route::any('/dashboard',[DashboardController::class,'index'])->name('dashboard.index');
 Route::get('/', function () {
-    return view('call');
+    return view('welcome');
 });
 
-Route::resource('call',Callcontroller::class)->middleware(['auth', 'verified']);;
-Route::resource('certificate',CertificateController::class)->middleware(['auth', 'verified']);;
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::resource('call', CallController::class);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
