@@ -19,7 +19,7 @@
 <body class="font-sans antialiased">
     <div class="min-h-screen bg-gray-100">
         <main>
-            <div class="isolate bg-white px-6 py-24 sm:py-10 lg:px-8">
+            <div class="isolate bg-white px-6 py-5 sm:py-5 lg:px-8">
 
                 <div class="flex justify-center mx-auto max-w-2xl items-center">
                     <img class="d-flex justify-content-center" width="200" height="200"
@@ -80,7 +80,7 @@
                             </div>
                         </div>
                         <div>
-                            <label for="company" class="block text-sm/6 font-semibold text-gray-900">Prefeitura</label>
+                            <label for="company" class="block text-sm/6 font-semibold text-gray-900">Dentro da prefeitura? (obrigatório)</label>
                             <div class="mt-2.5">
                                 <select name="properties" id=""
                                     class="block w-full rounded-md bg-white px-3.5 py-2 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600">

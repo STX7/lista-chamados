@@ -13,6 +13,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('call', CallController::class);
+Route::any('/show/{id}', [CallController::class, 'profile'])->name('call.show');
+Route::any('final', [CallController::class, 'final'])->name('call.final');
+Route::any('search', [CallController::class, 'search'])->name('call.search');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

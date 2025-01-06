@@ -23,5 +23,26 @@ class DatabaseSeeder extends Seeder
             'permission'=> '0',
             'status'=>'0',
         ]);
+        User::factory()->create([
+            'name' => 'Samuel',
+            'email' => 'admin@admin.com',
+            'password' => Hash::make('12345678'),
+            'permission'=> '1',
+            'status'=>'1',
+        ]);
+        User::factory()->create([
+            'name' => 'Sérgio',
+            'email' => 'sergio@admin.com',
+            'password' => Hash::make('12345678'),
+            'permission'=> '2',
+            'status'=>'2',
+        ]);
+        User::factory()->create([
+            'name' => 'Lucas',
+            'email' => 'lucas@admin.com',
+            'password' => Hash::make('12345678'),
+            'permission'=> '1',
+            'status'=>'1',
+        ]);
     }
 }

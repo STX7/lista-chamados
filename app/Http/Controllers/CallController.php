@@ -16,7 +16,7 @@ class CallController extends Controller
      */
     public function index()
     {
-        $calls = DB::table('calls')->paginate(5);
+        $calls = DB::table('calls')->orderBy('status')->paginate(5);
         return view('call.list',compact('calls'));
     }
 
@@ -80,7 +80,17 @@ class CallController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Call $call, $id)
+    public function profile($id)
+    {
+        try{
+            $call = Call::find($id);
+            return view('call.profile',compact('call'));
+        }catch(Exception){
+            return redirect()->view('404');
+        }
+    }
+
+    public function edit($id)
     {
         try{
             $call = Call::find($id);
@@ -93,26 +103,51 @@ class CallController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCallRequest $request, Call $call)
+    public function update(Request $request, Call $call)
     {
         try{
             $call->name =  $request->name;
             $call->number =  $request->number;
             $call->status = $request->status;
-            $call->address = $request->address;
             $call->email =  $request->email;
             $call->department =  $request->department;
             $call->description =  $request->description;
             $call->problem =  $request->problem;
             $call->properties =  $request->properties;
-            $call->comment =  $request->comment;
             $call->sector =  $request->sector;
             $call->save();
-            return redirect()->route('call.list')->with('success','Sucesso.');
+            return redirect()->route('call.index');
 
            }catch(Exception $e){
             return redirect()->back()->with('error', 'Erro');
         }
+
+    }
+
+    public function final(Request $request, Call $call)
+    {
+        try{
+            $call = Call::find($request->id);
+            $call->status = $request->status;
+            $call->save();
+            return redirect()->route('call.index');
+
+           }catch(Exception $e){
+            return redirect()->back()->with('error', 'Erro');
+        }
+    }
+
+    public function search(Request $request)
+    {
+        $search=trim($request->get('search'));
+        $calls=DB::table('calls')
+        ->select('id','department', 'description', 'created_at', 'problem','status')
+        ->where('name','LIKE','%'.$search.'%')
+        ->orWhere('department','LIKE','%'.$search.'%')
+        ->orWhere('problem','LIKE','%'.$search.'%')
+        ->orderBy('status')
+        ->paginate(5);
+        return view('call.list',compact('calls'));
     }
 
     /**
